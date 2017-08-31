@@ -1,0 +1,27 @@
+{
+  "name": "react-fullscreen-crossbrowser",
+  "version": "1.0.0",
+  "description": "A simple react full-screen component, which will work in both, JS and TS environment.",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build"
+  },
+  "author": "vasilevich",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/react": "^15.0.18",
+    "@types/react-dom": "^0.14.23",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
+  },
+  "files": [
+    "lib",
+    "LICENSE"
+  ],
+  "types": "./lib/index.d.ts",
+  "repository" :
+  { "type" : "git"
+  , "url" : "https://github.com/vasilevich/react-fullscreen-crossbrowser.git"
+  }
+}
