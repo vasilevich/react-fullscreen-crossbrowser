@@ -88,7 +88,7 @@ export default class FullScreen extends React.Component<any, any> {
 
   constructor(props: any) {
     super(props);
-
+	
   }
 
   componentDidMount() {
@@ -100,9 +100,6 @@ export default class FullScreen extends React.Component<any, any> {
   }
 
   componentWillReceiveProps(nextProps: any) {
-    this.detectFullScreen = this.detectFullScreen.bind(this);
-    this.enterFullScreen = this.enterFullScreen.bind(this);
-    this.leaveFullScreen = this.leaveFullScreen.bind(this);
     this.handleProps(nextProps);
   }
 
@@ -115,17 +112,17 @@ export default class FullScreen extends React.Component<any, any> {
     }
   }
 
-  detectFullScreen() {
+  detectFullScreen= () => {
     if (this.props.onChange) {
       this.props.onChange(!!fscreen.fullscreenElement);
     }
   }
 
-  enterFullScreen() {
+  enterFullScreen= () => {
     fscreen.requestFullscreen(this.node);
   }
 
-  leaveFullScreen() {
+  leaveFullScreen= () => {
     fscreen.exitFullscreen();
   }
 
