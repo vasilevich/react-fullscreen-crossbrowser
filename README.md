@@ -1,4 +1,4 @@
-[![npm version](https://badge.fury.io/js/react-fullscreen-crossbrowser.svg)](https://badge.fury.io/js/react-fullscreen-crossbrowser)
+[![npm version](https://badge.fury.io/js/react-fullscreen-crossbrowser.svg)](https://www.npmjs.com/package/node-project-badge)
 # react-fullscreen-crossbrowser
 
 A React component that sets its children to full screen using the Fullscreen API, normalized using [fscreen](https://github.com/rafrex/fscreen).
