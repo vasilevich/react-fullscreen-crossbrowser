@@ -1,6 +1,12 @@
 /// <reference types="react" />
 import * as React from 'react';
-export default class FullScreen extends React.Component<any, any> {
+export declare type IFullScreenProps = {
+    onClose?: () => void;
+    onOpen?: () => void;
+    onChange?: (state: boolean) => void;
+    enabled?: boolean;
+};
+export default class FullScreen extends React.Component<IFullScreenProps, never> {
     static defaultProps: {
         enabled: boolean;
     };

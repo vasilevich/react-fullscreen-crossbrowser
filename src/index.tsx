@@ -79,8 +79,16 @@ const fscreen = {
   },
 };
 
+export type IFullScreenProps = {
+  onClose?: () => void,
+  onOpen?: () => void,
+  onChange?: (state:boolean) => void,
+  enabled?:boolean
+};
 
-export default class FullScreen extends React.Component<any, any> {
+
+
+export default class FullScreen extends React.Component<IFullScreenProps, never> {
   static defaultProps = {
     enabled: false,
   };
@@ -116,6 +124,13 @@ export default class FullScreen extends React.Component<any, any> {
     if (this.props.onChange) {
       this.props.onChange(!!fscreen.fullscreenElement);
     }
+    if (this.props.onOpen&&!!fscreen.fullscreenElement) {
+      this.props.onOpen();
+    }
+    if (this.props.onClose&&!fscreen.fullscreenElement) {
+      this.props.onClose();
+    }
+	
   }
 
   enterFullScreen= () => {
