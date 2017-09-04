@@ -1,6 +1,6 @@
 {
   "name": "react-fullscreen-crossbrowser",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A simple react full-screen component, which will work in both, JS and TS environment.",
   "main": "lib/index.js",
   "scripts": {
