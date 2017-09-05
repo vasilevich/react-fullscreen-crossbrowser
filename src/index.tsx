@@ -47,51 +47,44 @@ const vendor = (
   []
 );
 
-
-const getFullScreenMethod= function(element:any) {
-    return element[vendor[key.requestFullscreen]];
-}
-
-const fscreen = {
-  requestFullscreen: (element: any) => getFullScreenMethod(element)(),
-  requestFullscreenFunction: (element: any) => element[vendor[key.requestFullscreen]],
-  get exitFullscreen() {
+class fscreen {
+  static requestFullscreen(element: any) { return element[vendor[key.requestFullscreen]]() };
+  static requestFullscreenFunction(element: any) { return element[vendor[key.requestFullscreen]] };
+  static get exitFullscreen() {
     return document[vendor[key.exitFullscreen]].bind(document);
-  },
-  addEventListener: (type: any, handler: any, options?: any) => document.addEventListener(vendor[key[type]], handler, options),
-  removeEventListener: (type: any, handler: any, options?: any) => document.removeEventListener(vendor[key[type]], handler, options),
-  get fullscreenEnabled() {
+  };
+  static addEventListener(type: any, handler: any, options: any) { return document.addEventListener(vendor[key[type]], handler, options) };
+  static removeEventListener(type: any, handler: any, options: any) { return document.removeEventListener(vendor[key[type]], handler, options) };
+  static get fullscreenEnabled() {
     return Boolean(document[vendor[key.fullscreenEnabled]]);
-  },
-  set fullscreenEnabled(val) {
-  },
-  get fullscreenElement() {
+  };
+  static set fullscreenEnabled(val) {
+  };
+  static get fullscreenElement() {
     return document[vendor[key.fullscreenElement]];
-  },
-  set fullscreenElement(val) {
-  },
-  get onfullscreenchange() {
+  };
+  static set fullscreenElement(val) {
+  };
+  static get onfullscreenchange() {
     return document[`on${vendor[key.fullscreenchange]}`.toLowerCase()];
-  },
-  set onfullscreenchange(handler) {
+  };
+  static set onfullscreenchange(handler) {
     document[`on${vendor[key.fullscreenchange]}`.toLowerCase()] = handler;
-  },
-  get onfullscreenerror() {
+  };
+  static get onfullscreenerror() {
     return document[`on${vendor[key.fullscreenerror]}`.toLowerCase()];
-  },
-  set onfullscreenerror(handler) {
+  };
+  static set onfullscreenerror(handler) {
     document[`on${vendor[key.fullscreenerror]}`.toLowerCase()] = handler;
-  },
+  };
 };
 
 export type IFullScreenProps = {
   onClose?: () => void,
   onOpen?: () => void,
-  onChange?: (state:boolean) => void,
-  enabled?:boolean
+  onChange?: (state: boolean) => void,
+  enabled?: boolean
 };
-
-
 
 export default class FullScreen extends React.Component<IFullScreenProps, never> {
   static defaultProps = {
@@ -105,11 +98,11 @@ export default class FullScreen extends React.Component<IFullScreenProps, never>
   }
 
   componentDidMount() {
-    fscreen.addEventListener('fullscreenchange', this.detectFullScreen);
+    fscreen.addEventListener('fullscreenchange', this.detectFullScreen, {});
   }
 
   componentWillUnmount() {
-    fscreen.removeEventListener('fullscreenchange', this.detectFullScreen);
+    fscreen.removeEventListener('fullscreenchange', this.detectFullScreen, {});
   }
 
   componentWillReceiveProps(nextProps: any) {
@@ -125,24 +118,24 @@ export default class FullScreen extends React.Component<IFullScreenProps, never>
     }
   }
 
-  detectFullScreen= () => {
+  detectFullScreen = () => {
     if (this.props.onChange) {
       this.props.onChange(!!fscreen.fullscreenElement);
     }
-    if (this.props.onOpen&&!!fscreen.fullscreenElement) {
+    if (this.props.onOpen && !!fscreen.fullscreenElement) {
       this.props.onOpen();
     }
-    if (this.props.onClose&&!fscreen.fullscreenElement) {
+    if (this.props.onClose && !fscreen.fullscreenElement) {
       this.props.onClose();
     }
 
   }
 
-  enterFullScreen= () => {
+  enterFullScreen = () => {
     fscreen.requestFullscreen(this.node);
   }
 
-  leaveFullScreen= () => {
+  leaveFullScreen = () => {
     fscreen.exitFullscreen();
   }
 
@@ -151,11 +144,10 @@ export default class FullScreen extends React.Component<IFullScreenProps, never>
       <div
         className="FullScreen"
         ref={node => (this.node = node)}
-        style={{height: '100%', width: '100%'}}
+        style={{ height: '100%', width: '100%' }}
       >
         {this.props.children}
       </div>
     );
   }
 }
-
