@@ -47,8 +47,13 @@ const vendor = (
   []
 );
 
+
+const getFullScreenMethod= function(element:any) {
+    return element[vendor[key.requestFullscreen]];
+}
+
 const fscreen = {
-  requestFullscreen: (element: any) => element[vendor[key.requestFullscreen]](),
+  requestFullscreen: (element: any) => getFullScreenMethod(element)(),
   requestFullscreenFunction: (element: any) => element[vendor[key.requestFullscreen]],
   get exitFullscreen() {
     return document[vendor[key.exitFullscreen]].bind(document);
@@ -96,7 +101,7 @@ export default class FullScreen extends React.Component<IFullScreenProps, never>
 
   constructor(props: any) {
     super(props);
-	
+
   }
 
   componentDidMount() {
@@ -130,7 +135,7 @@ export default class FullScreen extends React.Component<IFullScreenProps, never>
     if (this.props.onClose&&!fscreen.fullscreenElement) {
       this.props.onClose();
     }
-	
+
   }
 
   enterFullScreen= () => {
