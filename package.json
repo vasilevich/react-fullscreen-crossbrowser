@@ -18,8 +18,8 @@
     "LICENSE"
   ],
   "types": "./lib/index.d.ts",
-  "repository" :
-  { "type" : "git"
-  , "url" : "https://github.com/vasilevich/react-fullscreen-crossbrowser.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vasilevich/react-fullscreen-crossbrowser.git"
   }
 }
