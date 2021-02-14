@@ -92,7 +92,7 @@ export default class FullScreen extends React.Component<IFullScreenProps, never>
   };
   node: any;
 
-  constructor(props: any) {
+  constructor(props: IFullScreenProps) {
     super(props);
 
   }
@@ -105,11 +105,11 @@ export default class FullScreen extends React.Component<IFullScreenProps, never>
     fscreen.removeEventListener('fullscreenchange', this.detectFullScreen, {});
   }
 
-  componentWillReceiveProps(nextProps: any) {
-    this.handleProps(nextProps);
+  componentDidUpdate() {
+    this.handleProps(this.props);
   }
 
-  handleProps(props: any) {
+  handleProps(props: IFullScreenProps) {
     const enabled = fscreen.fullscreenElement;
     if (enabled && !props.enabled) {
       this.leaveFullScreen();

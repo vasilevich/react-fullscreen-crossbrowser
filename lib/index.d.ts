@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import * as React from 'react';
 export declare type IFullScreenProps = {
     onClose?: () => void;
@@ -11,11 +10,11 @@ export default class FullScreen extends React.Component<IFullScreenProps, never>
         enabled: boolean;
     };
     node: any;
-    constructor(props: any);
+    constructor(props: IFullScreenProps);
     componentDidMount(): void;
     componentWillUnmount(): void;
-    componentWillReceiveProps(nextProps: any): void;
-    handleProps(props: any): void;
+    componentDidUpdate(): void;
+    handleProps(props: IFullScreenProps): void;
     detectFullScreen: () => void;
     enterFullScreen: () => void;
     leaveFullScreen: () => void;
