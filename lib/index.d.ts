@@ -5,6 +5,7 @@ export declare type IFullScreenProps = {
     onChange?: (state: boolean) => void;
     enabled?: boolean;
 };
+export declare const getFullScreenEnabled: () => boolean;
 export default class FullScreen extends React.Component<React.PropsWithChildren<IFullScreenProps>, never> {
     static defaultProps: {
         enabled: boolean;

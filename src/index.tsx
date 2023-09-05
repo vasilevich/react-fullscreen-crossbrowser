@@ -86,6 +86,16 @@ export type IFullScreenProps = {
   enabled?: boolean
 };
 
+/**
+ *  The returned value indicates whether fullscreen mode is supported by the browser or not.
+ *  If the value is true, it means fullscreen is enabled and supported.
+ *  If the value is false, it means fullscreen is not enabled or supported.
+ */
+export const getFullScreenEnabled = () => {
+  // It returns the value of the fullscreenEnabled property from the fscreen object.
+  return fscreen.fullscreenEnabled;
+};
+
 export default class FullScreen extends React.Component<React.PropsWithChildren<IFullScreenProps>, never> {
   static defaultProps = {
     enabled: false,
